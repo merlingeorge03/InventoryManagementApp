@@ -38,6 +38,7 @@ namespace InventoryManagementApp
         {
             // TODO: Increase the item's stock quantity by the additional quantity.
             QuantityInStock += additionalQuantity;
+            Console.WriteLine($"\nItem Name: {ItemName} , Quantity restocked: {additionalQuantity}");
         }
 
         // Sell an item
@@ -47,12 +48,12 @@ namespace InventoryManagementApp
             // Make sure the stock doesn't go negative.
             if (QuantityInStock >= quantitySold)
             {
+                Console.WriteLine($"Item Name: {ItemName} , Quantity in stock: {QuantityInStock} , Quantity sold: {quantitySold}");
                 QuantityInStock -= quantitySold;
-                Console.WriteLine($"\nItem Name: {ItemName} , Quantity sold: {quantitySold}");
             }
             else
             {
-                Console.WriteLine($"\nItem Name: {ItemName}, Quantity in stock: {QuantityInStock} \nRequested quantity to be sold = {quantitySold} \n Quantity not in stock to sell");
+                Console.WriteLine($"\nItem Name: {ItemName}, Quantity in stock: {QuantityInStock} , Quantity to be sold = {quantitySold} \nQuantity not in stock to sell !!!");
             }
         }
 
@@ -93,6 +94,7 @@ namespace InventoryManagementApp
             item2.PrintDetails();
 
             // 2. Sell some items and then print the updated details.
+            Console.WriteLine("\n------Selling Items------");
             item1.SellItem(20); //Selling 5 Laptops
             item2.SellItem(2); // Selling 2 smartphones
 
@@ -101,9 +103,7 @@ namespace InventoryManagementApp
             item2.PrintDetails();
 
             // 3. Restock an item and print the updated details.
-            item1.RestockItem(3);
-            item2.RestockItem(4);
-
+            item2.RestockItem(3);
             Console.WriteLine("\n------Inventory after restocking------");
             item2.PrintDetails();
 
